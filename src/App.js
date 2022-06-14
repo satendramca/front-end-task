@@ -8,11 +8,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
 
 
+const [selectedData, setSelectedData] = useState([{}]);
 
-const onShow = (data)=>{
-  console.log("I am onDelete to data", data)
-
-
+const showData = (item)=>{
+  setSelectedData([item]);
 }
 
 
@@ -64,13 +63,13 @@ const [data, setData] = useState([
 
   return (
     <div className="App">
-    
+      
       {/* <h1>Hello World</h1> */}
 
 
        <BrowserRouter>
       <Routes>
-        <Route path="/" element={<User data={data} onShow={onShow} />}></Route>
+        <Route path="/" element={<User data={data} showData={showData} selectedData={selectedData} />}></Route>
         <Route path="/NextPage" element={<NextPage />}></Route>
       </Routes>
       </BrowserRouter> 

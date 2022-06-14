@@ -1,14 +1,10 @@
 import React from "react";
 
-const UserData = ({ data, onShow }) => {
+const UserData = ({ data, showData }) => {
   // console.log(data);
   return (
     <div>
-       <h2>{data.id}</h2> 
-      <h2>{data.email}</h2>
-      {/* <h2>{data.first_name}</h2> */}
-      {/* <h2>{data.last_name}</h2>  */}
-      <button className="container__btn" onClick={()=>{onShow(data)}}>Click Me</button><hr/>
+      <button className="container__btn" onClick={() => showData(data)}>{data.id}</button><hr/>
     </div>
   );
 };
