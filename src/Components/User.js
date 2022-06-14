@@ -3,37 +3,36 @@ import UserData from "./UserData";
 import { useState, useEffect } from "react";
 
 const User = (props) => {
-    const [userData, setData] = useState([]);
-    const [selectedData, setSelectedData] = useState([{}]);
+  const [userData, setData] = useState([]);
+  const [selectedData, setSelectedData] = useState([{}]);
 
-    const showData = (item)=>{
-      fetch(`https://reqres.in/api/users/${item.id}`)
-        .then(res => res.json())
-        .then(
-          (result) => {
-            setSelectedData([result.data]);
-          },
-          (error) => {
-            console.error(error);
-            setData([]);
-          }
-        )
-    }
-    
-    useEffect(() => {
-      fetch('https://reqres.in/api/users')
-        .then(res => res.json())
-        .then(
-          (result) => {
-            setData(result.data);
-          },
-          (error) => {
-            console.error(error);
-            setData([]);
-          }
-        )
-    }, []);
-    
+  const showData = (item) => {
+    fetch(`https://reqres.in/api/users/${item.id}`)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setSelectedData([result.data]);
+        },
+        (error) => {
+          console.error(error);
+          setData([]);
+        }
+      );
+  };
+
+  useEffect(() => {
+    fetch("https://reqres.in/api/users")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setData(result.data);
+        },
+        (error) => {
+          console.error(error);
+          setData([]);
+        }
+      );
+  }, []);
 
   return (
     <div>
